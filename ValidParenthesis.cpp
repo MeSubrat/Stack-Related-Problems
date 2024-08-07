@@ -1,40 +1,75 @@
+// #include<bits/stdc++.h>
+// using namespace std;
+
+// bool checkValidParethesis(string s)
+// {
+//     stack<char> st;
+//     // bool ans=false;
+//     int n=s.length();
+//     for(int i=0;i<n;i++)
+//     {
+//         if(s[i]=='(' || s[i]=='{' || s[i]=='[')
+//         {
+//             st.push(s[i]);
+//         }
+//         else
+//         {
+//             if(st.empty()) return false;
+//             char ch=st.top();
+//             st.pop();
+//             if(st.top()==')' && ch!='('){
+//                 return false;
+//             }
+//             else if(ch=='{' && st.top()!='}')
+//             {
+//                 return false;
+//             }
+//             else if(ch=='[' && st.top()!=']')
+//             {
+//                 return false;
+//             }
+            
+//         }
+//     }
+//     return st.empty();
+// }
+
+// int main()
+// {
+//     string s="(){}[]";
+//     cout<<checkValidParethesis(s);
+// }
 #include<bits/stdc++.h>
 using namespace std;
 
-bool checkValidParethesis(string s)
+bool checkValidParenthesis(string s)
 {
     stack<char> st;
-    bool ans=false;
-    for(int i=0;i!='\0';i++)
+    for(int i = 0; i < s.length(); i++)
     {
-        if(s[i]=='(' || s[i]=='{' || s[i]=='[')
+        if(s[i] == '(' || s[i] == '{' || s[i] == '[')
         {
             st.push(s[i]);
         }
         else
         {
-            if(st.empty()) ans= false;
-            char ch=s[i];
+            if(st.empty()) return false;
+            char ch = st.top();
             st.pop();
-            if(st.top()==')' && ch=='('){
-                ans= true;
-            }
-            else if(st.top()=='}' && ch=='{')
+            if((s[i] == ')' && ch != '(') || 
+               (s[i] == '}' && ch != '{') || 
+               (s[i] == ']' && ch != '['))
             {
-                ans= true;
+                return false;
             }
-            else if(st.top()==']' && ch=='[')
-            {
-                ans=true;
-            }
-            
         }
     }
-    return ans;
+    return st.empty(); // The stack should be empty if all brackets are matched
 }
 
 int main()
 {
-    string s="(){}[]";
-    cout<<checkValidParethesis(s);
+    string s = "(){}[]";
+    cout << (checkValidParenthesis(s) ? "true" : "false");
+    return 0;
 }

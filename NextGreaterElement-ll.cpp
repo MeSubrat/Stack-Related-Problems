@@ -13,7 +13,7 @@ vector<int> NGE2(vector<int> &arr) //-->THIS CODE IS NOT WORKING PROPERLY
             int ind=j%n;
             if(arr[ind]>arr[i])
             {
-                nge[i]=arr[i];
+                nge[i]=arr[ind];
                 break;
             }
         }
@@ -53,6 +53,7 @@ void print(vector<int>&arr)
 int main()
 {
     vector<int> arr={2,10,12,1,11};
-    vector<int> ans=NGE2BETTER(arr);
+    // vector<int> ans=NGE2BETTER(arr);
+    vector<int> ans=NGE2(arr);
     print(ans);
 }
